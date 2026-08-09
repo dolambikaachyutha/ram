@@ -1,6 +1,6 @@
 import streamlit as st
-from engine.llm_client import ask_ai
-from db.db_utils import get_listings
+from llm_client import ask_ai
+from db_utils import get_listings
 
 st.title("💬 ReLoop AI Assistant")
 st.caption("Ask questions about circular economy, carbon calculations, or find available waste materials.")
