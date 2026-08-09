@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import sqlite3
-from db.db_utils import get_buyer_orders, get_connection
+from db_utils import get_buyer_orders, get_connection
 
 # Ensure user is logged in
 if not st.session_state.user or st.session_state.user["role"] != "buyer":
