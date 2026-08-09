@@ -1,5 +1,5 @@
 import streamlit as st
-from db.db_utils import get_supplier_orders, update_order_status, get_all_buyer_requests
+from db_utils import get_supplier_orders, update_order_status, get_all_buyer_requests
 
 # Ensure user is logged in
 if not st.session_state.user or st.session_state.user["role"] != "supplier":
