@@ -1,4 +1,4 @@
-from engine.llm_client import ask_ai
+from llm_client import ask_ai
 
 PLATFORM_CONTEXT = """You are the support assistant for an AI-driven circular economy marketplace.
 Companies list waste materials (wood scraps, excess fabric, plastic offcuts, paper, metal) and the
