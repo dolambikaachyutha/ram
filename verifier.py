@@ -1,5 +1,5 @@
-from engine.llm_client import ask_ai
-from engine.price_engine import PRICE_DB
+from llm_client import ask_ai
+from price_engine import PRICE_DB
 
 MODERATION_PROMPT = """You are a content moderator for a circular economy waste marketplace.
 
