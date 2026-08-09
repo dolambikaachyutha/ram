@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from db.db_utils import get_supplier_orders
+from db_utils import get_supplier_orders
 
 # Ensure user is logged in
 if not st.session_state.user or st.session_state.user["role"] != "supplier":
