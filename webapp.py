@@ -292,31 +292,31 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Page Definitions
-home_page = st.Page("pages/home.py", title="Home", icon="🏠", default=True)
-buyer_login = st.Page("pages/buyer_login.py", title="Buyer Portal", icon="🛒")
-supplier_login = st.Page("pages/supplier_login.py", title="Supplier Portal", icon="🏭")
+home_page = st.Page("home.py", title="Home", icon="🏠", default=True)
+buyer_login = st.Page("buyer_login.py", title="Buyer Portal", icon="🛒")
+supplier_login = st.Page("supplier_login.py", title="Supplier Portal", icon="🏭")
 
 # Buyer Pages
-buyer_dash = st.Page("pages/buyer_dashboard.py", title="Dashboard", icon="📊", default=True)
-marketplace = st.Page("pages/marketplace.py", title="Marketplace", icon="🛒")
-ai_matcher = st.Page("pages/ai_matcher.py", title="AI Matcher", icon="🤖")
-buyer_verification = st.Page("pages/buyer_verification.py", title="Verification Registry", icon="✅")
-price_comparison = st.Page("pages/price_comparison.py", title="Price Comparison", icon="⚖️")
-carbon_impact = st.Page("pages/carbon_impact.py", title="Carbon Impact", icon="🌱")
-buyer_orders = st.Page("pages/buyer_orders.py", title="My Orders", icon="📦")
+buyer_dash = st.Page("buyer_dashboard.py", title="Dashboard", icon="📊", default=True)
+marketplace = st.Page("marketplace.py", title="Marketplace", icon="🛒")
+ai_matcher = st.Page("ai_matcher.py", title="AI Matcher", icon="🤖")
+buyer_verification = st.Page("buyer_verification.py", title="Verification Registry", icon="✅")
+price_comparison = st.Page("price_comparison.py", title="Price Comparison", icon="⚖️")
+carbon_impact = st.Page("carbon_impact.py", title="Carbon Impact", icon="🌱")
+buyer_orders = st.Page("buyer_orders.py", title="My Orders", icon="📦")
 
 # Supplier Pages
-supplier_dash = st.Page("pages/supplier_dashboard.py", title="Dashboard", icon="📊", default=True)
-supplier_verification = st.Page("pages/supplier_verification.py", title="Verify Business", icon="✅")
-add_material = st.Page("pages/add_material.py", title="Add Material", icon="➕")
-my_listings = st.Page("pages/my_listings.py", title="My Listings", icon="📋")
-buyer_requests = st.Page("pages/buyer_requests.py", title="Buyer Requests", icon="💬")
-material_analyzer = st.Page("pages/material_analyzer.py", title="Material Analyzer", icon="🔬")
-supplier_analytics = st.Page("pages/supplier_analytics.py", title="Analytics", icon="📈")
+supplier_dash = st.Page("supplier_dashboard.py", title="Dashboard", icon="📊", default=True)
+supplier_verification = st.Page("supplier_verification.py", title="Verify Business", icon="✅")
+add_material = st.Page("add_material.py", title="Add Material", icon="➕")
+my_listings = st.Page("my_listings.py", title="My Listings", icon="📋")
+buyer_requests = st.Page("buyer_requests.py", title="Buyer Requests", icon="💬")
+material_analyzer = st.Page("material_analyzer.py", title="Material Analyzer", icon="🔬")
+supplier_analytics = st.Page("supplier_analytics.py", title="Analytics", icon="📈")
 
 # Common Shared Pages
-chat_bot = st.Page("pages/ai_chatbot.py", title="AI Assistant", icon="💬")
-logout = st.Page("pages/logout.py", title="Logout", icon="🔓")
+chat_bot = st.Page("ai_chatbot.py", title="AI Assistant", icon="💬")
+logout = st.Page("logout.py", title="Logout", icon="🔓")
 
 # Select navigation layout based on Session State
 if st.session_state.user is None:
