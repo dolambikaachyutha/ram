@@ -1,5 +1,5 @@
 import streamlit as st
-from db.db_utils import create_user, login_user
+from db_utils import create_user, login_user
 
 st.title("🏭 Supplier Portal")
 st.caption("Verify your business, list factory waste materials, and manage buyer inquiries.")
