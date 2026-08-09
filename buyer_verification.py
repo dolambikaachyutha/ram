@@ -1,5 +1,5 @@
 import streamlit as st
-from db.db_utils import get_all_verifications
+from db_utils import get_all_verifications
 
 # Ensure user is logged in
 if not st.session_state.user or st.session_state.user["role"] != "buyer":
