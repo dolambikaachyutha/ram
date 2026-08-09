@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
-from db.db_utils import get_listings
-from engine.price_engine import get_price, PRICE_DB
+from db_utils import get_listings
+from price_engine import get_price, PRICE_DB
 
 # Ensure user is logged in
 if not st.session_state.user or st.session_state.user["role"] != "buyer":
