@@ -1,3 +1,26 @@
+<<<<<<< HEAD
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# Streamlit Local Secrets
+.streamlit/secrets.toml
+
+# Database
+*.db
+reloop.db
+data.db
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+=======
 venv/
 .venv/
 __pycache__/
@@ -5,3 +28,4 @@ __pycache__/
 .env
 .streamlit/secrets.toml
 *.db
+>>>>>>> 3f5079905486acbe880da20999815a9eccf523b4
