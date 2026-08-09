@@ -1,3 +1,8 @@
-streamlit
+streamlit==1.48.1
 google-genai
 pandas
+plotly
+pillow
+python-dotenv
+speechrecognition
+streamlit-mic-recorder
