@@ -1,5 +1,5 @@
 import streamlit as st
-from db.db_utils import get_listings, create_order
+from db_utils import get_listings, create_order
 
 # Ensure user is logged in
 if not st.session_state.user or st.session_state.user["role"] != "buyer":
@@ -198,7 +198,7 @@ st.divider()
 st.subheader("📢 Post a Sourcing Request")
 st.write("Can't find a supplier lot matching your specifications? Post a request so suppliers can see your sourcing needs in their feed!")
 
-from db.db_utils import add_buyer_request
+from db_utils import add_buyer_request
 
 with st.form("buyer_sourcing_form"):
     req_mat_type = st.selectbox("Material Category Needed", ["Wood Waste", "Cotton Waste", "Textile Waste", "Plastic Waste", "Paper Waste", "Metal Scrap", "Organic Waste"])
