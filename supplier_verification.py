@@ -1,6 +1,6 @@
 import streamlit as st
-from db.db_utils import get_verification_status, submit_verification
-from engine.llm_client import ask_ai
+from db_utils import get_verification_status, submit_verification
+from llm_client import ask_ai
 
 # Ensure user is logged in
 if not st.session_state.user or st.session_state.user["role"] != "supplier":
