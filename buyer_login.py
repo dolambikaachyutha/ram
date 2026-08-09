@@ -1,5 +1,5 @@
 import streamlit as st
-from db.db_utils import create_user, login_user
+from db_utils import create_user, login_user
 
 st.title("🛒 Buyer Portal")
 st.caption("Access the circular marketplace, track orders, and calculate carbon savings.")
