@@ -60,4 +60,4 @@ with tab2:
 # Navigation Help
 st.markdown("---")
 if st.button("🏠 Back to Home Page", use_container_width=True):
-    st.switch_page("pages/home.py")
+    st.switch_page("home.py")
