@@ -1,8 +1,8 @@
 import streamlit as st
-from engine.material_analyzer import analyze_listing
-from engine.price_engine import get_price
-from engine.carbon_engine import carbon_saved
-from engine.recommendation_engine import (
+from material_analyzer import analyze_listing
+from price_engine import get_price
+from carbon_engine import carbon_saved
+from recommendation_engine import (
     recommend_transport_method, 
     calculate_circularity_score, 
     predict_demand
