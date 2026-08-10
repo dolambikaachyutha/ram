@@ -4,7 +4,7 @@ from db_utils import get_buyer_orders
 # Ensure user is logged in
 if not st.session_state.user or st.session_state.user["role"] != "buyer":
     st.warning("Please log in as a Buyer to view this page.")
-    st.switch_page("pages/buyer_login.py")
+    st.switch_page("buyer_login.py")
     st.stop()
 
 user = st.session_state.user
