@@ -1,13 +1,13 @@
 import streamlit as st
+import re
+
 from price_engine import get_price
-from material_analyzer_engine import analyze_listing
 from carbon_engine import carbon_saved
 from recommendation_engine import (
-    recommend_transport_method, 
-    calculate_circularity_score, 
+    recommend_transport_method,
+    calculate_circularity_score,
     predict_demand
 )
-import re
 
 def analyze_listing(text):
     text_lower = text.lower()
@@ -45,7 +45,12 @@ def analyze_listing(text):
         "summary": text
     }
 # Ensure user is logged in
-if not st.session_state.user or st.session_state.user["role"] != "supplier":
+if "user" not in st.session_state:
+    st.warning("Please log in as a Supplier to view this page.")
+    st.switch_page("supplier_login.py")
+    st.stop()
+
+if st.session_state.user["role"] != "supplier":
     st.warning("Please log in as a Supplier to view this page.")
     st.switch_page("supplier_login.py")
     st.stop()
