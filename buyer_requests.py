@@ -4,7 +4,7 @@ from db_utils import get_supplier_orders, update_order_status, get_all_buyer_req
 # Ensure user is logged in
 if not st.session_state.user or st.session_state.user["role"] != "supplier":
     st.warning("Please log in as a Supplier to view this page.")
-    st.switch_page("pages/supplier_login.py")
+    st.switch_page("supplier_login.py")
     st.stop()
 
 user = st.session_state.user
