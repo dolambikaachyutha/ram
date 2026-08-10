@@ -1,12 +1,49 @@
 import streamlit as st
 from price_engine import get_price
+from material_analyzer_engine import analyze_listing
 from carbon_engine import carbon_saved
 from recommendation_engine import (
     recommend_transport_method, 
     calculate_circularity_score, 
     predict_demand
 )
+import re
 
+def analyze_listing(text):
+    text_lower = text.lower()
+
+    material_type = "wood"
+
+    if "cotton" in text_lower:
+        material_type = "cotton"
+    elif "plastic" in text_lower:
+        material_type = "plastic"
+    elif "paper" in text_lower:
+        material_type = "paper"
+    elif "metal" in text_lower:
+        material_type = "metal"
+    elif "textile" in text_lower or "fabric" in text_lower:
+        material_type = "fabric"
+
+    quantity = 100.0
+    unit = "kg"
+
+    qty_match = re.search(
+        r"(\d+(?:\.\d+)?)\s*(kg|tons?|units?)",
+        text_lower
+    )
+
+    if qty_match:
+        quantity = float(qty_match.group(1))
+        unit = qty_match.group(2)
+
+    return {
+        "material_type": material_type,
+        "quantity": quantity,
+        "unit": unit,
+        "condition": "good",
+        "summary": text
+    }
 # Ensure user is logged in
 if not st.session_state.user or st.session_state.user["role"] != "supplier":
     st.warning("Please log in as a Supplier to view this page.")
