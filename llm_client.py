@@ -42,9 +42,9 @@ def ask_ai(prompt):
     except Exception as e:
         try:
             response = client.models.generate_content(
-                model="gemini-1.5-flash",
+                model="gemini-3.6-flash",
                 contents=prompt
             )
             return response.text
         except Exception:
-            return f"AI Service response unavailable: {e}"
+            return f"AI Service response unavailable: {e}"
