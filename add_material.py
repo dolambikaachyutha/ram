@@ -173,4 +173,4 @@ if submit_btn:
         
         st.success("Successfully published waste lot! Listing is now active on the Marketplace.")
         st.toast("Listing Published!", icon="📢")
-        st.switch_page("pages/my_listings.py")
+        st.switch_page("my_listings.py")
