@@ -1,5 +1,4 @@
 import streamlit as st
-from material_analyzer import analyze_listing
 from price_engine import get_price
 from carbon_engine import carbon_saved
 from recommendation_engine import (
