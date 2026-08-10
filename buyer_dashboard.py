@@ -5,7 +5,7 @@ from db_utils import get_buyer_orders
 # Ensure user is logged in
 if not st.session_state.user or st.session_state.user["role"] != "buyer":
     st.warning("Please log in as a Buyer to view this page.")
-    st.switch_page("pages/buyer_login.py")
+    st.switch_page("buyer_login.py")
     st.stop()
 
 user = st.session_state.user
@@ -92,7 +92,7 @@ st.markdown("### 🚀 Quick Actions")
 act_col1, act_col2 = st.columns(2)
 with act_col1:
     if st.button("🛒 Open Marketplace", use_container_width=True):
-        st.switch_page("pages/marketplace.py")
+        st.switch_page("marketplace.py")
 with act_col2:
     if st.button("🤖 Find Supplier with AI Matcher", use_container_width=True):
-        st.switch_page("pages/ai_matcher.py")
+        st.switch_page("ai_matcher.py")
