@@ -77,7 +77,7 @@ with p_col1:
     </div>
     """, unsafe_allow_html=True)
     if st.button("Enter Buyer Portal", use_container_width=True, key="btn_buyer_enter"):
-        st.switch_page("pages/buyer_login.py")
+        st.switch_page("buyer_login.py")
 
 with p_col2:
     st.markdown("""
@@ -91,7 +91,7 @@ with p_col2:
     </div>
     """, unsafe_allow_html=True)
     if st.button("Enter Supplier Portal", use_container_width=True, key="btn_supplier_enter"):
-        st.switch_page("pages/supplier_login.py")
+        st.switch_page("supplier_login.py")
 
 st.divider()
 
