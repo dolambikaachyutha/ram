@@ -2,9 +2,9 @@ import streamlit as st
 import pandas as pd
 from db_utils import get_supplier_orders
 
-# ---------------------------------------------------
-# Authentication Check
-# ---------------------------------------------------
+# -----------------------------------------
+# Authentication
+# -----------------------------------------
 
 if "user" not in st.session_state:
     st.warning("Please log in as a Supplier.")
@@ -18,52 +18,51 @@ if st.session_state.user["role"] != "supplier":
 
 user = st.session_state.user
 
-# ---------------------------------------------------
+# -----------------------------------------
 # Page Header
-# ---------------------------------------------------
+# -----------------------------------------
 
 st.title("📈 Supplier Analytics Dashboard")
 st.caption(
-    "Track revenue, transactions, sales volume, and marketplace performance."
+    "Monitor revenue, sales performance, transactions and business growth."
 )
 
-# ---------------------------------------------------
-# Fetch Orders
-# ---------------------------------------------------
+# -----------------------------------------
+# Load Orders
+# -----------------------------------------
 
 try:
     orders = get_supplier_orders(user["id"])
-
 except Exception as e:
     st.error(f"Database Error: {e}")
     st.stop()
 
-# ---------------------------------------------------
+# -----------------------------------------
 # No Orders
-# ---------------------------------------------------
+# -----------------------------------------
 
 if not orders:
     st.info(
-        "No completed transactions yet. "
+        "No transactions available yet. "
         "Analytics will appear after buyers purchase your materials."
     )
     st.stop()
 
-# ---------------------------------------------------
+# -----------------------------------------
 # DataFrame
-# ---------------------------------------------------
+# -----------------------------------------
 
 df = pd.DataFrame(orders)
 
 # Debug Section
-with st.expander("🔍 Debug Database Records"):
-    st.write("Columns Returned:")
+with st.expander("🔍 Database Records"):
+    st.write("Available Columns:")
     st.write(df.columns.tolist())
     st.dataframe(df)
 
-# ---------------------------------------------------
-# Date Processing
-# ---------------------------------------------------
+# -----------------------------------------
+# Date Handling
+# -----------------------------------------
 
 if "created_at" in df.columns:
     df["created_at"] = pd.to_datetime(
@@ -73,9 +72,9 @@ if "created_at" in df.columns:
 
     df["Date"] = df["created_at"].dt.date
 
-# ---------------------------------------------------
-# Safe KPI Calculations
-# ---------------------------------------------------
+# -----------------------------------------
+# KPI Calculations
+# -----------------------------------------
 
 total_revenue = (
     df["total_price"].sum()
@@ -97,24 +96,24 @@ total_quantity = (
 
 total_transactions = len(df)
 
-# ---------------------------------------------------
+# -----------------------------------------
 # KPI Cards
-# ---------------------------------------------------
+# -----------------------------------------
 
-st.markdown("## 📊 Key Performance Indicators")
+st.markdown("## 📊 Business Overview")
 
 c1, c2, c3, c4 = st.columns(4)
 
 with c1:
     st.metric(
-        "💰 Total Revenue",
+        "💰 Revenue",
         f"₹{total_revenue:,.2f}"
     )
 
 with c2:
     st.metric(
-        "📦 Material Sold",
-        f"{total_quantity:,.1f} kg"
+        "📦 Quantity Sold",
+        f"{total_quantity:,.1f}"
     )
 
 with c3:
@@ -125,15 +124,15 @@ with c3:
 
 with c4:
     st.metric(
-        "📈 Avg Order Value",
+        "📈 Avg Order",
         f"₹{average_order:,.2f}"
     )
 
 st.divider()
 
-# ---------------------------------------------------
-# Charts
-# ---------------------------------------------------
+# -----------------------------------------
+# Revenue Table
+# -----------------------------------------
 
 col1, col2 = st.columns(2)
 
@@ -152,12 +151,18 @@ with col1:
             .reset_index()
         )
 
-        st.line_chart(
-            revenue_df.set_index("Date")
+        st.dataframe(
+            revenue_df,
+            use_container_width=True,
+            hide_index=True
         )
 
     else:
-        st.info("Revenue data unavailable.")
+        st.info("Revenue information unavailable.")
+
+# -----------------------------------------
+# Material Sales Table
+# -----------------------------------------
 
 with col2:
 
@@ -174,18 +179,20 @@ with col2:
             .reset_index()
         )
 
-        st.bar_chart(
-            material_df.set_index("material")
+        st.dataframe(
+            material_df,
+            use_container_width=True,
+            hide_index=True
         )
 
     else:
-        st.info("Material sales data unavailable.")
+        st.info("Material sales information unavailable.")
 
 st.divider()
 
-# ---------------------------------------------------
+# -----------------------------------------
 # Material Performance
-# ---------------------------------------------------
+# -----------------------------------------
 
 if (
     "material" in df.columns
@@ -208,9 +215,11 @@ if (
         hide_index=True
     )
 
-# ---------------------------------------------------
+st.divider()
+
+# -----------------------------------------
 # Transaction History
-# ---------------------------------------------------
+# -----------------------------------------
 
 st.subheader("📋 Transaction History")
 
@@ -220,9 +229,9 @@ st.dataframe(
     hide_index=True
 )
 
-# ---------------------------------------------------
+# -----------------------------------------
 # Summary
-# ---------------------------------------------------
+# -----------------------------------------
 
 st.success(
     f"Successfully analyzed {total_transactions} transactions."
