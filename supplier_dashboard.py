@@ -5,7 +5,7 @@ from db_utils import get_supplier_listings, get_supplier_orders
 # Ensure user is logged in
 if not st.session_state.user or st.session_state.user["role"] != "supplier":
     st.warning("Please log in as a Supplier to view this page.")
-    st.switch_page("pages/supplier_login.py")
+    st.switch_page("supplier_login.py")
     st.stop()
 
 user = st.session_state.user
@@ -90,7 +90,7 @@ st.markdown("### 🚀 Quick Actions")
 col_act1, col_act2 = st.columns(2)
 with col_act1:
     if st.button("➕ Add Waste Material Lot", use_container_width=True):
-        st.switch_page("pages/add_material.py")
+        st.switch_page("add_material.py")
 with col_act2:
     if st.button("✅ Verify Your Business", use_container_width=True):
-        st.switch_page("pages/supplier_verification.py")
+        st.switch_page("supplier_verification.py")
