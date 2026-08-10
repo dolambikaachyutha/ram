@@ -3,10 +3,59 @@ import datetime
 import re
 
 from db_utils import add_listing
-from material_analyzer_engine import analyze_listing
 from price_engine import get_price
 from carbon_engine import carbon_saved
+import re
 
+
+def analyze_listing(text):
+    text_lower = text.lower()
+
+    material_type = "wood"
+
+    if "cotton" in text_lower:
+        material_type = "cotton"
+    elif "plastic" in text_lower:
+        material_type = "plastic"
+    elif "paper" in text_lower:
+        material_type = "paper"
+    elif "metal" in text_lower:
+        material_type = "metal"
+    elif "textile" in text_lower or "fabric" in text_lower:
+        material_type = "fabric"
+    elif "organic" in text_lower:
+        material_type = "organic"
+
+    quantity = 100.0
+    unit = "kg"
+
+    qty_match = re.search(
+        r"(\d+(?:\.\d+)?)\s*(kg|tons?|units?)",
+        text_lower
+    )
+
+    if qty_match:
+        quantity = float(qty_match.group(1))
+        unit = qty_match.group(2)
+
+    condition = "good"
+
+    if "excellent" in text_lower:
+        condition = "excellent"
+    elif "fair" in text_lower:
+        condition = "fair"
+    elif "poor" in text_lower:
+        condition = "poor"
+
+    return {
+        "material_type": material_type,
+        "quantity": quantity,
+        "unit": unit,
+        "condition": condition,
+        "price": get_price(material_type),
+        "lifetime_days": 30,
+        "summary": text
+    }
 # -----------------------------
 # Authentication Check
 # -----------------------------
